@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import CalculatorContext from '../../context/context';
+import { CalculatorContext } from '../../context/context';
 import useForm from '../../hooks/use-form';
 
 import classes from './Age.module.css';
@@ -9,6 +9,7 @@ const isNotEmpty = value => value.trim() !== "" && value.length === 2;
 const isNotEmptyYear = value => value.trim() !== "" && value.length === 4;
 
 const Age = () => {
+    const { dayInput, monthInput, yearInput } = useContext(CalculatorContext)
 
     const { 
         value: enteredDay,
@@ -67,6 +68,11 @@ const Age = () => {
     const yearTextClasses = dayInputError ? `${classes.input} ${classes.invalidText}` : `${classes.input}`;
 
     return (
+        <CalculatorContext.Provider value={{
+            dayInput: enteredDay,
+            monthInput: enteredMonth,
+            yearInput: enteredYear
+        }}>
         <form onSubmit={submitFormHandler}>
             <div className="">
                 <label htmlFor="day" className={dayTextClasses}>Day</label>
@@ -109,6 +115,7 @@ const Age = () => {
             </div>
             <SubmitIcon formIsValid={!formIsValid} />
         </form>
+        </CalculatorContext.Provider>
     );
 };
 
