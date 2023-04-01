@@ -1,9 +1,5 @@
 import React from 'react';
 
-const CalculatorContext = React.createContext({
-    enteredDay: "",
-    enteredMonth: "",
-    enteredYear: ""
-});
+const CalculatorContext = React.createContext(null);
 
 export default CalculatorContext;

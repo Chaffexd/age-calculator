@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
 import CalculatorContext from '../../context/context';
+import useForm from '../../hooks/use-form';
 
 const Result = (props) => {
-    const { enteredDay, enteredMonth, enteredYear } = useContext(CalculatorContext);
+    const { useForm } = useContext(CalculatorContext);
 
     console.log(enteredDay)
     return (

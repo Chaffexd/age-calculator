@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import CalculatorContext from '../../context/context';
 import useForm from '../../hooks/use-form';
 
 import classes from './Age.module.css';
@@ -8,6 +9,7 @@ const isNotEmpty = value => value.trim() !== "" && value.length === 2;
 const isNotEmptyYear = value => value.trim() !== "" && value.length === 4;
 
 const Age = () => {
+
     const { 
         value: enteredDay,
         hasError: dayInputError,

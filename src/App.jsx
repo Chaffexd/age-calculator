@@ -1,19 +1,16 @@
-import CalculatorContext from './context/context'
+import CalculatorContext from './context/context';
+import useForm from './hooks/use-form';
 
-import './App.css'
-import Form from './components/Form/Form'
+import './App.css';
+import Form from './components/Form/Form';
 
 function App() {
 
   return (
     <div className="App">
-      <CalculatorContext.Provider value={{
-        enteredDay,
-        enteredMonth,
-        enteredYear
-      }} />
+      <CalculatorContext.Provider >
         <Form />
-      <CalculatorContext.Provider />
+      </CalculatorContext.Provider>
     </div>
   )
 }
