@@ -24,12 +24,13 @@ button:disabled:active {
   cursor: not-allowed;
 }
 
-.input {
+input {
     padding: 1em;
 }
 
 .invalid {
     border: 1px solid #b40e0e;
+    color: #b40e0e;
 }
 
 .invalidText {
