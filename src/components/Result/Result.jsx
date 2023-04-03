@@ -8,8 +8,6 @@ const Result = () => {
     // Since we're using context on purpose for this project, I initialise what is in my context here
     const context = useContext(CalculatorContext);
     // Is initially undefined as it's only defined when form is submitted
-    console.log(context);
-
     // For the date
     const date = new Date();
 

@@ -86,16 +86,19 @@ const Form = () => {
             setYearErrorMsg("Date cannot be in the future");
             return;
         }
-        console.log(dayInput, monthInput, yearInput)
-        console.log(day, month, year)
-        console.log(todayError)
+        // Input from user
+        console.log(dayInput, monthInput, yearInput);
+        // Todays date
+        console.log(day, month, year);
 
+        // Adding to context
         const values = {
             enteredDay: dayInput,
             enteredMonth: monthInput,
             enteredYear: yearInput
         };
 
+        // Reset form
         setSubmittedValues(values);
         setDayInput("");
         setMonthInput("");
@@ -105,6 +108,7 @@ const Form = () => {
         setYearError(false);
     };
 
+    // CSS classes
     const invalidDayBox = `${dayError ? `${classes.invalidInput}` : ``}`;
     const invalidHeader = `${dayError ? `${classes.invalidText}` : ``}`;
 
