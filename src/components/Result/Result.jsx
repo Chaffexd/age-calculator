@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import CalculatorContext from '../../context/context';
+import { useAutoAnimate } from '@formkit/auto-animate/react'
 
 import classes from './Result.module.css';
 
@@ -13,7 +14,7 @@ const Result = () => {
     const date = new Date();
 
     let day = date.getDate();
-    let month = date.getMonth() + 1;
+    let month = date.getMonth();
     let year = date.getFullYear();
 
     // I define age as an empty object to hold date data
@@ -44,7 +45,7 @@ const Result = () => {
 
     return (
         <div className={classes.resultContainer}>
-            <h3><span className={classes.year}>{age.year || "- -"}</span>&nbsp;years</h3>
+            <h3><span className={`${age.year ? classes.animation : classes.year }`}>{age.year || "- -"}</span>&nbsp;years</h3>
             <h3><span className={classes.year}>{age.month || "- -"}</span>&nbsp;months</h3>
             <h3><span className={classes.year}>{age.day || "- -"}</span>&nbsp;days</h3>
         </div>
