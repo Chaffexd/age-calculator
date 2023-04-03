@@ -1,5 +1,4 @@
-import React from 'react';
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 import CalculatorContext from '../../context/context';
 
 const Result = () => {
@@ -15,22 +14,18 @@ const Result = () => {
     let month = date.getMonth() + 1;
     let year = date.getFullYear();
 
-    // Today's date
-    let currentDate = `${day}/${month}/${year}`;
-    console.log(currentDate);
-
     // I define age as an empty object to hold date data
     let age = {};
     // If we have context we make it into the next if check
     if(context) {
-        if(context.yearInput) {
-            age.year = year - context.yearInput;
+        if(context) {
+            age.year = year - context.enteredYear;
         }
-        if(context.monthInput) {
-            age.month = month - context.monthInput;
+        if(context.enteredMonth) {
+            age.month = month - context.enteredMonth;
         }
-        if(context.dayInput) {
-            age.day = day - context.dayInput;
+        if(context.enteredDay) {
+            age.day = day - context.enteredDay;
             // If the current day - dayInput is less than 0 we need to change the day and month
             // Otherwise we have a negative integer 
             if(age.day < 0) {
