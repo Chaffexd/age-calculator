@@ -1,7 +1,17 @@
-.formContainer {
-    background-color: white;
-    width: 50rem;
-    height: 35rem;
-    border-radius: 30px 30px 190px 30px;
-    padding: 3.5em;
+button {
+    background-color: hsl(259, 100%, 65%);
+    border-radius: 50%;
+    height: 7em;
+    width: 7em;
+    cursor: pointer;
+    border: none;
+}
+
+button:disabled,
+button:disabled:hover,
+button:disabled:active {
+  background-color: #ccc;
+  color: #292929;
+  border-color: #ccc;
+  cursor: not-allowed;
 }
