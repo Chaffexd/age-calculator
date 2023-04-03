@@ -1,7 +1,17 @@
 .App {
-    background-color: hsl(0, 0%, 94%);
-    height: 100vh;
+    background-color: white;
+    height: 35em;
+    width: 45em;
+    border-radius: 25px 25px 115px 25px;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    padding: 3em;
+}
+
+@media only screen and (max-width: 1000px) {
+    .App {
+        width: 375px;
+        padding: 0;
+        height: auto;
+    }
 }

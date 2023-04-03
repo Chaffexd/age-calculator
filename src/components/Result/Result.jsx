@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import CalculatorContext from '../../context/context';
 
+import classes from './Result.module.css';
+
 const Result = () => {
     // Since we're using context on purpose for this project, I initialise what is in my context here
     const context = useContext(CalculatorContext);
@@ -40,12 +42,11 @@ const Result = () => {
         }
     }
 
-
     return (
-        <div>
-            <h3><span>{age.year || "- -"}</span>Years</h3>
-            <h3><span>{age.month || "- -"}</span>Months</h3>
-            <h3><span>{age.day || "- -"}</span>Days</h3>
+        <div className={classes.resultContainer}>
+            <h3><span className={classes.year}>{age.year || "- -"}</span>&nbsp;years</h3>
+            <h3><span className={classes.year}>{age.month || "- -"}</span>&nbsp;months</h3>
+            <h3><span className={classes.year}>{age.day || "- -"}</span>&nbsp;days</h3>
         </div>
     );
 };

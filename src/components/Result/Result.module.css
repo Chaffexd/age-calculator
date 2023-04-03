@@ -1,0 +1,22 @@
+.year {
+    color: hsl(259, 100%, 65%);
+    font-size: 80px;
+}
+
+h3 {
+    margin: 0;
+    font-size: 80px;
+    font-style: italic;
+}
+
+@media only screen and (max-width: 1000px) {
+    h3 {
+        font-size: 40px;
+    }
+    .year {
+        font-size: 40px;
+    }
+    .resultContainer {
+        margin: 0 auto;
+    }
+}

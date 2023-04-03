@@ -43,25 +43,33 @@ const Form = () => {
     const submitFormHandler = (e) => {
         e.preventDefault();
 
-        if(dayInput.trim() === "") {
+        if(dayInput.trim() === "" || monthInput.trim() === "" || yearInput.trim() === "") {
             setDayError(true);
-            setDayErrorMsg("Value cannot be empty.")
+            setMonthError(true);
+            setYearError(true);
+            setDayErrorMsg("This field is required.")
+            setMonthErrorMsg("This field is required.");
+            setYearErrorMsg("This field is required.");
+            return;
         }
         if(dayInput < 1 || dayInput > 31 || dayInput.length > 2) {
             setDayError(true);
-            setDayErrorMsg("Must be a valid date.");
-        }
-        if(monthInput.trim() === "") {
-            setMonthError(true);
-            setMonthErrorMsg("Value cannot be empty.")
+            setDayErrorMsg("Must be a valid day.");
+            return;
         }
         if(monthInput < 1 || monthInput > 12 || monthInput.length > 2) {
             setMonthError(true);
             setMonthErrorMsg("Must be a valid month.");
+            return;
         }
         if(yearInput.length > 4 || yearInput.length < 4) {
             setYearError(true);
             setYearErrorMsg("Must be a valid year");
+            return;
+        }
+        if(yearInput > year) {
+            setYearError(true);
+            setYearErrorMsg("Must be in the past");
             return;
         }
         if(dayInput == day && monthInput == month && yearInput == year) {
@@ -92,47 +100,65 @@ const Form = () => {
         setDayInput("");
         setMonthInput("");
         setYearInput("");
+        setDayError(false);
+        setMonthError(false);
+        setYearError(false);
     };
+
+    const invalidDayBox = `${dayError ? `${classes.invalidInput}` : ``}`;
+    const invalidHeader = `${dayError ? `${classes.invalidText}` : ``}`;
+
+    const invalidMonthyBox = `${monthError ? `${classes.invalidInput}` : ``}`;
+    const invalidMonthHeader = `${monthError ? `${classes.invalidText}` : ``}`;
+
+    const invalidYearBox = `${yearError ? `${classes.invalidInput}` : ``}`;
+    const invalidYearHeader = `${yearError ? `${classes.invalidText}` : ``}`;
 
     return (
         <CalculatorContext.Provider value={submittedValues}>
             <form onSubmit={submitFormHandler}>
-                <div>
-                    <label htmlFor="day">Day</label>
+                <div className={classes.inputContainer}>
+                    <label htmlFor="day" className={invalidHeader}>DAY</label>
                     <input 
                         id="day" 
                         type="number" 
                         placeholder="DD"
                         value={dayInput}
                         onChange={handleDayInput}
+                        className={invalidDayBox}
                     />
-                    {dayError && <p>{dayErrorMsg}</p>}
+                    {dayError && <p className={classes.invalid}>{dayErrorMsg}</p>}
                 </div>
-                <div>
-                    <label htmlFor="month">Month</label>
+                <div className={classes.inputContainer}>
+                    <label htmlFor="month" className={invalidMonthHeader}>MONTH</label>
                     <input 
                         id="month" 
                         type="number" 
                         placeholder="MM"
                         value={monthInput}
                         onChange={handleMonthInput}
+                        className={invalidMonthyBox}
                     />
-                    {monthError && <p>{monthErrorMsg}</p>}
+                    {monthError && <p className={classes.invalid}>{monthErrorMsg}</p>}
                 </div>
-                <div>
-                    <label htmlFor="year">Year</label>
+                <div className={classes.inputContainer}>
+                    <label htmlFor="year" className={invalidYearHeader}>YEAR</label>
                     <input 
                         id="year" 
                         type="number" 
                         placeholder="YYYY"
                         value={yearInput}
                         onChange={handleYearInput}
+                        className={invalidYearBox}
                     />
-                    {yearError && <p>{yearErrorMsg}</p>}
+                    {yearError && <p className={classes.invalid}>{yearErrorMsg}</p>}
                 </div>
-                <SubmitIcon />
+                <div className={classes.buttonDiv}>
+                    <span className={classes.line}></span>
+                    <SubmitIcon />
+                </div>
             </form>
-            {todayError ? <p>{todayErrorMsg}</p> : <Result/>}
+            {todayError ? <p className={classes.todaysAge}>{todayErrorMsg}</p> : <Result/>}
         </CalculatorContext.Provider>
     );
 };
